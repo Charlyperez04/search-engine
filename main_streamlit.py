@@ -34,16 +34,16 @@ titles, urls, contents, embeddings = load_data_embeddings()
 st.title("📚 Seth's Blog Search")
 st.write("Search Seth Godin's blog posts by topic or keyword.")
 
-query = st.text_input("🔎 Ingresa tu búsqueda:", "Books recommendation")
+query = st.text_input("🔎 Enter your search:", "Books recommendation")
 
 if st.button("🔍 Buscar"):
     if query:
-        with st.spinner("Buscando resultados... ⏳"):
+        with st.spinner("Searching for results... ⏳"):
             time.sleep(1) 
 
             result = embeddings.search(query, 5)
             if result:
-                st.subheader("Resultados:")
+                st.subheader("Results:")
                 for idx, (res_id, score) in enumerate(result):
                     title = titles[res_id]
                     url = urls[res_id]
@@ -51,9 +51,9 @@ if st.button("🔍 Buscar"):
 
                     st.markdown(f"### {idx+1}. [{title}]({url})")
                     st.write(f"📖 {content_snippet}")
-                    st.write(f"🔗 [Leer más]({url})")
+                    st.write(f"🔗 [Read more]({url})")
                     st.markdown("---")
             else:
-                st.warning("No se encontraron resultados.")
+                st.warning("No results found.")
     else:
-        st.warning("Por favor, ingresa un término de búsqueda.")
+        st.warning("Please enter a search term.")
