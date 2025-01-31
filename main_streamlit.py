@@ -4,20 +4,29 @@ import txtai
 import streamlit as st
 import kagglehub
 import time
+import subprocess
 
 dataset_path = kagglehub.dataset_download("glushko/seth-godins-blogs-dataset")
 csv_file = os.path.join(dataset_path, "seth-data.csv")
 
 df = pd.read_csv(csv_file).dropna()
-
 titles = df["title"].values
 urls = df["url"].values
-contents = df["content_plain"].values 
+contents = df["content_plain"].values
+
+file_path = 'embeddings_seth.tar.gz'
+
+if not os.path.exists(file_path):
+    st.write("El archivo embeddings_seth.tar.gz no se encuentra, generando el archivo...")
+    
+    subprocess.run(['python3', 'main.py'])
+
+    time.sleep(10)
 
 @st.cache_data
 def load_data_embeddings():
     embeddings = txtai.Embeddings()
-    embeddings.load('embeddings_seth.tar.gz') 
+    embeddings.load(file_path)
     return titles, urls, contents, embeddings
 
 titles, urls, contents, embeddings = load_data_embeddings()
