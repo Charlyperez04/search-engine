@@ -1,8 +1,6 @@
 # Ignorar entorno virtual
 venv/
 
-# Ignorar archivos generados como embeddings
-embeddings_seth.tar.gz
 
 # Ignorar archivos de sistema (para usuarios de macOS)
 .DS_Store
