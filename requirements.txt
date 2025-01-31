@@ -1,0 +1,4 @@
+txtai
+pandas
+streamlit
+kagglehub
