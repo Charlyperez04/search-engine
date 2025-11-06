@@ -2,7 +2,7 @@
 
 This project is a simple blog search application that allows users to search for blog posts from Seth Godin's collection. The application uses a dataset of Seth Godin's blog posts and leverages machine learning embeddings to provide relevant search results based on user input.
 
-## Features
+## Features 
 
 - **Search functionality**: Users can search for blog posts by entering keywords or topics.
 - **Results display**: Displays the most relevant blog posts, including title, snippet, and a link to the full post.
